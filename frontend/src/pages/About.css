@@ -1,0 +1,134 @@
+/* ── Shared Page Hero ── */
+.page-hero {
+  position: relative; height: 380px;
+  display: flex; align-items: flex-end;
+  padding-bottom: 60px; overflow: hidden;
+  margin-top: 0;
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transform: scale(1.05);
+}
+.page-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(8,8,8,1) 0%, rgba(8,8,8,0.7) 50%, rgba(8,8,8,0.4) 100%);
+}
+.page-hero-content {
+  position: relative; z-index: 2; padding: 0 6%;
+}
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem,7vw,6rem);
+  font-weight: 700; text-transform: uppercase;
+  line-height: 0.95; letter-spacing: -2px;
+}
+.page-hero-title .accent {
+  background: var(--gradient-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* ── Story ── */
+.about-story { padding: var(--section-padding); background: var(--black); }
+.about-story-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-body {
+  color: var(--white2); font-size: 1rem; line-height: 1.9; margin-top: 18px;
+}
+.about-img-stack { position: relative; }
+.about-img-main { width: 100%; height: 460px; object-fit: cover; }
+.about-img-accent {
+  position: absolute; bottom: -30px; left: -30px;
+  width: 160px; height: 200px; object-fit: cover;
+  border: 4px solid var(--orange); z-index: 2;
+}
+
+/* ── Mission ── */
+.mission-section { padding: var(--section-padding); background: var(--dark2); }
+.mv-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 60px;
+}
+.mv-card {
+  background: var(--panel); border: var(--border-dim);
+  padding: 44px 36px; transition: var(--transition);
+}
+.mv-card:hover {
+  border-color: rgba(255,77,0,0.3);
+  box-shadow: var(--glow-orange);
+  transform: translateY(-4px);
+}
+.mv-icon { font-size: 2.2rem; margin-bottom: 18px; }
+.mv-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 2px;
+  color: var(--white); margin-bottom: 14px;
+}
+.mv-text { font-size: 0.95rem; color: var(--white2); line-height: 1.8; }
+
+/* ── Achievements ── */
+.achievements-section { padding: var(--section-padding); background: var(--black); }
+.achievements-grid {
+  display: grid; grid-template-columns: repeat(6,1fr); gap: 2px; margin-top: 60px;
+}
+.achievement-card {
+  padding: 40px 20px; text-align: center;
+  background: var(--panel); border: var(--border-dim); transition: var(--transition);
+}
+.achievement-card:hover { border-color: rgba(255,77,0,0.3); background: var(--dark3); }
+.achievement-num {
+  font-family: var(--font-display);
+  font-size: 2.6rem; font-weight: 700; line-height: 1;
+  background: var(--gradient-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.achievement-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray);
+}
+
+/* ── Trainers grid ── */
+.about-trainers { padding: var(--section-padding); background: var(--dark2); }
+.trainers-grid-4 {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 2px;
+}
+
+/* ── Gym Photos ── */
+.gym-photos-section { padding: var(--section-padding); background: var(--black); }
+.gym-photos-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; margin-top: 50px;
+}
+.gym-photo-item { overflow: hidden; aspect-ratio: 3/4; }
+.gym-photo-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease; filter: brightness(0.8);
+}
+.gym-photo-item:hover img { transform: scale(1.06); filter: brightness(1); }
+
+/* ── About CTA ── */
+.about-cta { padding: 100px 6%; background: var(--dark2); }
+.cta-title-sm {
+  font-family: var(--font-display);
+  font-size: clamp(2rem,5vw,4rem);
+  font-weight: 700; text-transform: uppercase;
+  line-height: 1; letter-spacing: -1px; margin-bottom: 16px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .achievements-grid { grid-template-columns: repeat(3,1fr); }
+  .trainers-grid-4 { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 900px) {
+  .about-story-layout { grid-template-columns: 1fr; gap: 50px; }
+  .about-img-accent { display: none; }
+  .mv-grid { grid-template-columns: 1fr; }
+  .gym-photos-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .achievements-grid { grid-template-columns: repeat(2,1fr); }
+  .gym-photos-grid { grid-template-columns: 1fr 1fr; }
+}

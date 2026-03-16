@@ -1,0 +1,458 @@
+# TITAN FITNESS CLUB — COMPLETE PROJECT DOCUMENTATION
+# =====================================================
+# Pune's #1 Premium Gym Website | Full Stack Application
+# =====================================================
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ BRAND INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Gym Name    :  Titan Fitness Club
+  Location    :  FC Road, Shivajinagar, Pune 411005
+  Phone       :  +91 98765 43210
+  Email       :  info@titanfitness.com
+  Tagline     :  Build Strength. Transform Life.
+  Founded     :  2017
+  Website     :  http://localhost:3000 (Local)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ TECH STACK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  FRONTEND
+  --------
+  Framework   :  React JS 18
+  Routing     :  React Router DOM v6
+  Styling     :  Pure CSS (CSS Variables, No Bootstrap)
+  State       :  React Context API
+  API Calls   :  Fetch API (no axios)
+  Port        :  3000
+
+  BACKEND
+  -------
+  Runtime     :  Node.js
+  Framework   :  Express.js v4
+  Auth        :  JWT (JSON Web Token)
+  Password    :  bcryptjs (Hashing)
+  Security    :  Helmet.js, CORS, Rate Limiter
+  Logging     :  Morgan
+  Port        :  5000
+
+  DATABASE
+  --------
+  Database    :  MongoDB (NoSQL)
+  ODM         :  Mongoose v8
+  DB Name     :  titanfitness
+  GUI Tool    :  MongoDB Compass
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ FOLDER STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  titan-fitness/
+  │
+  ├── frontend/
+  │   ├── public/
+  │   │   └── index.html
+  │   └── src/
+  │       ├── components/          ← Reusable UI Parts
+  │       │   ├── Navbar.jsx
+  │       │   ├── Footer.jsx
+  │       │   ├── HeroSection.jsx
+  │       │   ├── ProgramCard.jsx
+  │       │   ├── TrainerCard.jsx
+  │       │   ├── MembershipCard.jsx
+  │       │   ├── TestimonialSlider.jsx
+  │       │   ├── GalleryGrid.jsx
+  │       │   ├── BlogCard.jsx
+  │       │   ├── ContactForm.jsx
+  │       │   ├── Loader.jsx
+  │       │   ├── ToastNotification.jsx
+  │       │   └── FloatingButtons.jsx
+  │       │
+  │       ├── pages/               ← Website Pages
+  │       │   ├── Home.jsx
+  │       │   ├── About.jsx
+  │       │   ├── Programs.jsx
+  │       │   ├── Trainers.jsx
+  │       │   ├── Membership.jsx
+  │       │   ├── Gallery.jsx
+  │       │   ├── Testimonials.jsx
+  │       │   ├── Blog.jsx
+  │       │   ├── Contact.jsx
+  │       │   └── Admin.jsx
+  │       │
+  │       ├── styles/              ← CSS Files
+  │       │   ├── variables.css
+  │       │   ├── global.css
+  │       │   └── animations.css
+  │       │
+  │       ├── data/                ← Static Data Files
+  │       │   ├── programsData.js
+  │       │   ├── trainersData.js
+  │       │   ├── testimonialsData.js
+  │       │   ├── blogData.js
+  │       │   └── galleryData.js
+  │       │
+  │       ├── context/
+  │       │   └── AppContext.js    ← Global State + API
+  │       │
+  │       ├── App.js               ← Main Router
+  │       └── index.js             ← Entry Point
+  │
+  └── backend/
+      ├── server.js                ← Main Server File
+      ├── seed.js                  ← Database Seed Script
+      ├── .env                     ← Environment Variables
+      ├── config/
+      │   └── db.js
+      ├── models/                  ← MongoDB Schemas
+      │   ├── User.js
+      │   ├── Program.js
+      │   ├── Trainer.js
+      │   └── index.js (Blog, Contact, Testimonial, Gallery, Membership)
+      ├── controllers/
+      │   └── mainController.js    ← All Business Logic
+      ├── routes/                  ← API Routes
+      │   ├── authRoutes.js
+      │   ├── programRoutes.js
+      │   ├── trainerRoutes.js
+      │   ├── blogRoutes.js
+      │   ├── contactRoutes.js
+      │   ├── testimonialRoutes.js
+      │   ├── galleryRoutes.js
+      │   └── membershipRoutes.js
+      └── middleware/
+      │    └── auth.js              ← JWT Protection
+      ├── utils/
+      │   ├── emailService.js
+      │   
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ WEBSITE PAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Page           URL                  Description
+  ----------     -----------------    --------------------------------
+  Home           /                    Hero, Programs, Trainers, CTA
+  About          /about               Story, Mission, Achievements
+  Programs       /programs            6 Workout Programs with Filter
+  Trainers       /trainers            4 Elite Trainer Profiles
+  Membership     /membership          Basic / Pro / Elite Plans
+  Gallery        /gallery             Filter + Lightbox Gallery
+  Testimonials   /testimonials        Member Success Stories
+  Blog           /blog                Articles with Category Filter
+  Blog Post      /blog/:slug          Individual Blog Post
+  Contact        /contact             Form + Map + Details
+  Admin          /admin               Full CRUD Dashboard
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ MONGODB DATABASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Database Name  :  titanfitness
+  Connection     :  mongodb://127.0.0.1:27017/titanfitness
+
+  Collections (Tables):
+  ┌─────────────────┬──────────────────────────────────────┐
+  │ Collection      │ काय असतं                              │
+  ├─────────────────┼──────────────────────────────────────┤
+  │ users           │ Admin login credentials               │
+  │ programs        │ 6 workout programs                   │
+  │ trainers        │ 4 trainer profiles                   │
+  │ blogs           │ Blog posts / articles                │
+  │ testimonials    │ Member reviews                       │
+  │ galleries       │ Gallery images                       │
+  │ contacts        │ Contact form submissions             │
+  │ memberships     │ Member enrollments                   │
+  └─────────────────┴──────────────────────────────────────┘
+
+  Seed Data:
+  - users        : 1 (admin)
+  - programs     : 6
+  - trainers     : 4
+  - blogs        : 6
+  - testimonials : 5
+  - galleries    : 8
+  - contacts     : 0 (form submit केल्यावर येतो)
+  - memberships  : 0 (enroll केल्यावर येतो)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ API ENDPOINTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Base URL : http://localhost:5000/api
+
+  AUTH
+  POST   /auth/login              Admin Login
+  GET    /auth/me                 Current User Info
+
+  PROGRAMS
+  GET    /programs                All Programs (Public)
+  POST   /programs                Add Program (Admin only)
+  PUT    /programs/:id            Update Program (Admin only)
+  DELETE /programs/:id            Delete Program (Admin only)
+
+  TRAINERS
+  GET    /trainers                All Trainers (Public)
+  POST   /trainers                Add Trainer (Admin only)
+  PUT    /trainers/:id            Update Trainer (Admin only)
+  DELETE /trainers/:id            Delete Trainer (Admin only)
+
+  BLOGS
+  GET    /blogs                   All Blogs (Public)
+  GET    /blogs/:slug             Single Blog (Public)
+  POST   /blogs                   Add Blog (Admin only)
+  PUT    /blogs/:id               Update Blog (Admin only)
+  DELETE /blogs/:id               Delete Blog (Admin only)
+
+  CONTACTS
+  POST   /contacts                Submit Contact Form (Public)
+  GET    /contacts                View All Contacts (Admin only)
+  PATCH  /contacts/:id/read       Mark as Read (Admin only)
+
+  TESTIMONIALS
+  GET    /testimonials            All Testimonials (Public)
+  POST   /testimonials            Add Testimonial (Admin only)
+
+  GALLERY
+  GET    /gallery                 All Gallery Items (Public)
+  POST   /gallery                 Add Gallery Item (Admin only)
+
+  MEMBERSHIPS
+  POST   /memberships/enroll      Enroll Member (Public)
+  GET    /memberships             All Members (Admin only)
+  GET    /memberships/stats       Dashboard Stats (Admin only)
+
+  HEALTH CHECK
+  GET    /health                  API Status Check
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ ADMIN PANEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  URL       :  http://localhost:3000/admin
+  Email     :  admin@titanfitness.com
+  Password  :  admin123
+
+  Admin Panel मध्ये काय करता येतं:
+  ┌─────────────────┬───────────────────────────────────┐
+  │ Tab             │ Features                          │
+  ├─────────────────┼───────────────────────────────────┤
+  │ Dashboard       │ Stats overview, Recent inquiries  │
+  │ Programs        │ Add / Edit / Delete programs      │
+  │ Trainers        │ Add / Edit / Delete trainers      │
+  │ Contacts        │ View inquiries, Mark as read      │
+  │ Members         │ View / Add memberships            │
+  │ Blog Posts      │ Add / Edit / Delete blogs         │
+  └─────────────────┴───────────────────────────────────┘
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ MEMBERSHIP PLANS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  BASIC PLAN     :  Rs. 1,499 / month  |  Rs. 14,390 / year
+  PRO PLAN       :  Rs. 2,999 / month  |  Rs. 28,790 / year
+  ELITE PLAN     :  Rs. 4,999 / month  |  Rs. 47,990 / year
+
+  Yearly plan मध्ये 20% discount मिळतो.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ WEBSITE FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  DESIGN FEATURES
+  ✅ Dark Theme with Fire/Orange gradient branding
+  ✅ Fully Responsive (Mobile, Tablet, Desktop)
+  ✅ Parallax scrolling effect on Hero section
+  ✅ Scroll reveal animations on all sections
+  ✅ Animated number counters (2500+ members etc.)
+  ✅ Smooth hover effects on all cards
+  ✅ Loading screen animation
+  ✅ Scroll progress bar at top
+
+  INTERACTIVE FEATURES
+  ✅ Monthly / Yearly pricing toggle
+  ✅ Gallery filter by category (Gym Floor, Training, etc.)
+  ✅ Gallery lightbox preview
+  ✅ Testimonial auto-sliding slider
+  ✅ Toast notification system
+  ✅ WhatsApp floating button (direct chat)
+  ✅ Scroll to top button
+  ✅ Program category filter
+  ✅ Blog category filter
+  ✅ Contact form with validation
+
+  BACKEND FEATURES
+  ✅ JWT Authentication for Admin
+  ✅ Password hashing with bcryptjs
+  ✅ Rate limiting (200 requests per 15 min)
+  ✅ CORS protection
+  ✅ Helmet.js security headers
+  ✅ MongoDB with Mongoose
+  ✅ Full CRUD for all collections
+  ✅ Admin-only protected routes
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ SECURITY DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✅ PASSWORD HASHING
+     User passwords कधीही plain text मध्ये save होत नाहीत.
+     bcryptjs वापरून 12 rounds of hashing होतो.
+     Database मध्ये पण plain password दिसत नाही.
+
+  ✅ JWT TOKEN AUTHENTICATION
+     Login केल्यावर JWT token मिळतो (7 दिवस valid).
+     प्रत्येक Admin API call मध्ये हा token पाठवावा लागतो.
+     Token शिवाय Admin routes access होत नाहीत.
+
+  ✅ CORS PROTECTION
+     फक्त http://localhost:3000 वरूनच API access होतो.
+     बाहेरून direct API call करता येत नाही.
+
+  ✅ RATE LIMITING
+     15 मिनिटात 200 पेक्षा जास्त requests आल्या तर block होतो.
+     Brute force attacks पासून संरक्षण.
+
+  ✅ HELMET.JS SECURITY HEADERS
+     XSS attacks पासून संरक्षण.
+     Clickjacking पासून संरक्षण.
+     Content Security Policy.
+
+  ✅ ADMIN ROUTE PROTECTION
+     /contacts, /memberships, /stats हे routes
+     फक्त Admin JWT token असेल तरच access होतात.
+     Normal users ला access नाही.
+
+  ⚠️ PRODUCTION साठी हे करायला हवं
+     1. JWT_SECRET strong random string वापरा
+     2. MongoDB Atlas (Cloud) वापरा local नाही
+     3. HTTPS enable करा (SSL Certificate)
+     4. Admin password बदला (admin123 weak आहे)
+     5. Environment variables .env मध्ये ठेवा
+        (GitHub वर .env कधीही push करू नका!)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ HOW TO RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  PREREQUISITES
+  - Node.js v18+        (https://nodejs.org)
+  - MongoDB Community   (https://mongodb.com/try/download/community)
+  - MongoDB Compass     (GUI for database)
+
+  TERMINAL 1 — BACKEND
+  cd titan-fitness\backend
+  npm install
+  npm run seed       (फक्त एकदाच - database setup)
+  npm run dev        (Server start)
+
+  TERMINAL 2 — FRONTEND
+  cd titan-fitness\frontend
+  npm install
+  npm start
+
+  URLS
+  Website  :  http://localhost:3000
+  Admin    :  http://localhost:3000/admin
+  API      :  http://localhost:5000/api
+  Health   :  http://localhost:5000/api/health
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ ENVIRONMENT VARIABLES (.env)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  backend/.env मध्ये:
+
+  PORT=5000
+  MONGO_URI=mongodb://127.0.0.1:27017/titanfitness
+  JWT_SECRET=titan_super_secret_jwt_key_pune_2024
+  JWT_EXPIRE=7d
+  NODE_ENV=development
+  CLIENT_URL=http://localhost:3000
+
+  ⚠️ हे file कधीही GitHub वर upload करू नका!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ PRODUCTION DEPLOYMENT (Live करायला)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  FRONTEND → Vercel (Free)
+  1. https://vercel.com वर account बनवा
+  2. GitHub वर frontend folder upload करा
+  3. Vercel मध्ये import करा
+  4. Automatic deploy होतो
+
+  BACKEND → Railway / Render (Free)
+  1. https://railway.app वर account बनवा
+  2. backend folder deploy करा
+  3. Environment variables set करा
+
+  DATABASE → MongoDB Atlas (Free 512MB)
+  1. https://cloud.mongodb.com वर account बनवा
+  2. Free cluster बनवा
+  3. Connection string मिळेल
+  4. MONGO_URI मध्ये Atlas string टाका
+
+  DOMAIN → Namecheap / GoDaddy
+  - titanfitness.com किंवा तत्सम domain घ्या
+  - Vercel ला connect करा
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ COMMON ERRORS & FIXES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Error                          Fix
+  ─────────────────────────────────────────────────
+  MongoDB connection error       services.msc मध्ये
+                                 MongoDB Start करा
+
+  ECONNREFUSED ::1:27017         .env मध्ये localhost ऐवजी
+                                 127.0.0.1 वापरा
+
+  Failed to fetch                Backend terminal चालू आहे
+                                 का check करा (port 5000)
+
+  Admin access required          localStorage.clear() करा
+                                 परत login करा
+
+  import/first ESLint error      imports file च्या top वर
+                                 असायला हवेत
+
+  Port already in use            दुसरी terminal मध्ये
+                                 backend बंद करा
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ PROJECT SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Total Files        :  70+
+  Frontend Pages     :  10
+  React Components   :  13
+  Backend Routes     :  20+
+  MongoDB Collections:  8
+  CSS Variables      :  25+
+  Animations         :  10+
+
+  हे project एक complete full-stack web application आहे.
+  React + Node.js + MongoDB हे industry-standard tech stack आहे.
+  हे CV मध्ये, portfolio मध्ये, किंवा actual business साठी
+  वापरता येतं.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Built for Titan Fitness Club, Pune 2025
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

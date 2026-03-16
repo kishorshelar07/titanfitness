@@ -1,0 +1,58 @@
+export const trainersData = [
+  {
+    id: 1,
+    name: 'Arjun Rao',
+    specialization: 'Strength & Conditioning',
+    bio: 'National-level powerlifter turned coach. Arjun has helped over 400 athletes break personal records and build competition-ready physiques. His no-nonsense approach to progressive overload is legendary in Pune.',
+    photo: 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=500&q=80',
+    experience: 9,
+    certifications: ['NSCA-CSCS', 'IPF Coach Level 2', 'Precision Nutrition L1'],
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      youtube: 'https://youtube.com',
+      linkedin: 'https://linkedin.com',
+    },
+  },
+  {
+    id: 2,
+    name: 'Priya Sharma',
+    specialization: 'Fat Loss & Nutrition',
+    bio: 'Priya combines evidence-based nutrition science with smart training to create sustainable transformations. She has coached 300+ clients to their goal bodies, specializing in women\'s fitness and hormonal health.',
+    photo: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=500&q=80',
+    experience: 7,
+    certifications: ['ACE Certified PT', 'Precision Nutrition L2', 'Women\'s Hormonal Health Coach'],
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      youtube: 'https://youtube.com',
+      linkedin: 'https://linkedin.com',
+    },
+  },
+  {
+    id: 3,
+    name: 'Rohan Desai',
+    specialization: 'CrossFit & HIIT',
+    bio: 'CrossFit Level-2 Trainer and functional fitness specialist. Rohan\'s classes are the most sought-after at Titan — expect to be pushed beyond what you thought was possible, safely.',
+    photo: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&q=80',
+    experience: 6,
+    certifications: ['CrossFit L-2 Trainer', 'NASM-CPT', 'Olympic Lifting Coach'],
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      youtube: 'https://youtube.com',
+      linkedin: 'https://linkedin.com',
+    },
+  },
+  {
+    id: 4,
+    name: 'Kavya Nair',
+    specialization: 'Yoga & Wellness',
+    bio: 'RYT-500 certified yoga instructor and mindfulness coach. Kavya brings ancient wisdom into modern fitness, helping clients reduce stress, improve flexibility, and find genuine mental clarity.',
+    photo: 'https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=500&q=80',
+    experience: 8,
+    certifications: ['RYT-500 Yoga Alliance', 'Mindfulness Meditation Teacher', 'Prenatal Yoga Certified'],
+    socialLinks: {
+      instagram: 'https://instagram.com',
+      youtube: 'https://youtube.com',
+      linkedin: 'https://linkedin.com',
+    },
+  },
+];

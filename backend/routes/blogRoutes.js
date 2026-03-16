@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const ctrl = require('../controllers/mainController');
+const { protect, adminOnly } = require('../middleware/auth');
+router.get('/', ctrl.getBlogs);
+router.get('/:slug', ctrl.getBlogBySlug);
+router.post('/', protect, adminOnly, ctrl.createBlog);
+router.put('/:id', protect, adminOnly, ctrl.updateBlog);
+router.delete('/:id', protect, adminOnly, ctrl.deleteBlog);
+module.exports = router;

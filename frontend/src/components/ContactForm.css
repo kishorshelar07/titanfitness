@@ -1,0 +1,75 @@
+.contact-form { display: flex; flex-direction: column; gap: 0; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-label {
+  display: block;
+  font-family: var(--font-mono); font-size: 0.62rem;
+  letter-spacing: 3px; color: var(--orange);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.form-input {
+  width: 100%;
+  background: var(--panel);
+  border: var(--border-dim);
+  color: var(--white);
+  padding: 14px 18px;
+  font-family: var(--font-body); font-size: 0.95rem;
+  transition: var(--transition);
+  appearance: none;
+}
+.form-input::placeholder { color: var(--gray); }
+.form-input:focus {
+  border-color: rgba(255,77,0,0.45);
+  background: var(--dark3);
+  outline: none;
+}
+.form-textarea { resize: vertical; min-height: 130px; }
+
+.form-submit {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 18px;
+  background: var(--gradient-fire); color: white;
+  border: none; cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--glow-orange);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.form-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(255,77,0,0.6);
+}
+.form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white; border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.form-success {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px; text-align: center; padding: 60px 20px;
+}
+.success-icon {
+  width: 70px; height: 70px;
+  background: var(--gradient-fire);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: white;
+  clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  box-shadow: var(--glow-orange);
+}
+.form-success h3 {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700;
+  text-transform: uppercase; color: var(--white);
+}
+.form-success p { color: var(--gray); font-size: 1rem; }
+
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,110 @@
+.membership-card {
+  background: var(--panel);
+  border: var(--border-dim);
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.membership-card.featured {
+  border-color: rgba(255,77,0,0.5);
+  background: var(--dark3);
+}
+.membership-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), var(--glow-orange);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 22px; right: -34px;
+  background: var(--gradient-fire);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 3px;
+  color: white;
+  padding: 6px 50px;
+  transform: rotate(45deg);
+}
+
+.plan-header { margin-bottom: 24px; }
+.plan-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 6px;
+}
+.plan-tagline {
+  font-size: 0.85rem; color: var(--gray);
+  font-family: var(--font-mono); font-size: 0.65rem;
+}
+
+.plan-price-wrap { display: flex; align-items: flex-end; gap: 2px; margin-bottom: 6px; }
+.plan-currency {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 400;
+  color: var(--orange); line-height: 1.8;
+}
+.plan-amount {
+  font-family: var(--font-display);
+  font-size: 4rem; font-weight: 700;
+  line-height: 1; color: var(--white);
+}
+.plan-period {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; letter-spacing: 2px;
+  color: var(--gray); text-transform: uppercase;
+  margin-bottom: 8px; margin-left: 4px;
+}
+
+.yearly-save {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold2);
+  background: rgba(232,184,75,0.1);
+  border: 1px solid rgba(232,184,75,0.25);
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 4px;
+}
+
+.plan-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 28px 0; }
+
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 34px; }
+.plan-feature {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.95rem; color: var(--white2);
+}
+.plan-feature.inactive { color: var(--gray); text-decoration: line-through; }
+.feature-icon {
+  width: 20px; height: 20px;
+  background: rgba(255,77,0,0.12);
+  border: 1px solid rgba(255,77,0,0.28);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.62rem; color: var(--orange); flex-shrink: 0;
+}
+.plan-feature.inactive .feature-icon {
+  background: rgba(107,101,96,0.1);
+  border-color: rgba(107,101,96,0.2);
+  color: var(--gray);
+}
+
+.plan-join-btn {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 16px;
+  background: transparent;
+  color: var(--orange);
+  border: 1px solid rgba(255,77,0,0.4);
+  cursor: pointer; transition: var(--transition);
+}
+.plan-join-btn:hover,
+.membership-card.featured .plan-join-btn {
+  background: var(--gradient-fire);
+  border-color: transparent;
+  color: white;
+  box-shadow: var(--glow-orange);
+}
