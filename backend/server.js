@@ -65,7 +65,11 @@ app.use((err, req, res, next) => {
 });
 
 // ─── MongoDB Connection ───────────────────────────────────────────────────────
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 10000,
+  socketTimeoutMS: 45000,
+  connectTimeoutMS: 10000,
+})
   .then(() => {
     console.log('MongoDB Connected to titanfitness DB');
     const PORT = process.env.PORT || 5000;
