@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection        from '../components/HeroSection';
 import ProgramCard        from '../components/ProgramCard';
@@ -8,7 +8,6 @@ import { programsData }   from '../data/programsData';
 import { trainersData }   from '../data/trainersData';
 import { blogData }       from '../data/blogData';
 import BlogCard           from '../components/BlogCard';
-import { useApp }         from '../context/AppContext';
 import './Home.css';
 
 /* ── Scroll reveal hook ── */
@@ -50,7 +49,7 @@ const useCounters = () => {
 const Home = () => {
   useReveal();
   useCounters();
-  const { showToast } = useApp();
+
 
   return (
     <main>

@@ -30,6 +30,7 @@ const TestimonialSlider = () => {
   useEffect(() => {
     timerRef.current = setInterval(() => go(1), 5000);
     return () => clearInterval(timerRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perView]);
 
   useEffect(() => {
