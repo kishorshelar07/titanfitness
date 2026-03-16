@@ -43,6 +43,7 @@ app.use('/api/testimonials',  require('./routes/testimonialRoutes'));
 app.use('/api/auth',          require('./routes/authRoutes'));
 app.use('/api/gallery',       require('./routes/galleryRoutes'));
 app.use('/api/memberships',   require('./routes/membershipRoutes'));
+app.use('/api/payment',       require('./routes/paymentRoutes'));
 
 // Health Check
 app.get('/api/health', (req, res) => {
@@ -66,12 +67,12 @@ app.use((err, req, res, next) => {
 // ─── MongoDB Connection ───────────────────────────────────────────────────────
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('✅ MongoDB Connected to titanfitness DB');
+    console.log('MongoDB Connected to titanfitness DB');
     const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+    app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
   })
   .catch((err) => {
-    console.error('❌ MongoDB connection error:', err.message);
+    console.error('MongoDB connection error:', err.message);
     process.exit(1);
   });
 
