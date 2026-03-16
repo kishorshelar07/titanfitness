@@ -2,8 +2,9 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 
 const AppContext = createContext();
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
+// Helper — API call with token
 const apiCall = async (method, endpoint, body = null) => {
   const token = localStorage.getItem('titan_token');
   const res = await fetch(`${BASE_URL}${endpoint}`, {
@@ -20,18 +21,18 @@ const apiCall = async (method, endpoint, body = null) => {
 };
 
 export const AppProvider = ({ children }) => {
-  const [toast,     setToast]     = useState({ show: false, message: '', type: 'success' });
-  const [isAdmin,   setIsAdmin]   = useState(false);
+  const [toast, setToast]         = useState({ show: false, message: '', type: 'success' });
+  const [isAdmin, setIsAdmin]     = useState(false);
   const [adminUser, setAdminUser] = useState(null);
-  const [loading,   setLoading]   = useState(false);
+  const [loading, setLoading]     = useState(false);
 
-  // Toast
+  // ── Toast ──────────────────────────────────────────────────────
   const showToast = useCallback((message, type = 'success') => {
     setToast({ show: true, message, type });
     setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 3500);
   }, []);
 
-  // Session restore on page refresh
+  // ── Restore session on mount ───────────────────────────────────
   useEffect(() => {
     const token = localStorage.getItem('titan_token');
     const user  = localStorage.getItem('titan_user');
@@ -46,7 +47,7 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  // Admin Login
+  // ── Admin Login ────────────────────────────────────────────────
   const adminLogin = async (email, password) => {
     setLoading(true);
     try {
@@ -65,7 +66,7 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  // Admin Logout
+  // ── Admin Logout ───────────────────────────────────────────────
   const adminLogout = () => {
     localStorage.removeItem('titan_token');
     localStorage.removeItem('titan_user');
@@ -74,7 +75,7 @@ export const AppProvider = ({ children }) => {
     showToast('Logged out successfully');
   };
 
-  // Contact Form Submit
+  // ── Contact Submit ─────────────────────────────────────────────
   const submitContact = async (formData) => {
     try {
       const data = await apiCall('POST', '/contacts', formData);
@@ -86,7 +87,7 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  // Membership Enroll
+  // ── Membership Enroll ─────────────────────────────────────────
   const enrollMembership = async (formData) => {
     try {
       const data = await apiCall('POST', '/memberships/enroll', formData);
@@ -98,12 +99,16 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  // ── Generic API helper (for Admin CRUD) ───────────────────────
+  const api = { call: apiCall };
+
   return (
     <AppContext.Provider value={{
       toast, showToast,
       isAdmin, adminUser, adminLogin, adminLogout,
       loading, setLoading,
       submitContact, enrollMembership,
+      api,
     }}>
       {children}
     </AppContext.Provider>
