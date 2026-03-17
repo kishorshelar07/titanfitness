@@ -167,6 +167,11 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-layout">
+      {/* Mobile Overlay */}
+      {sidebarOpen && window.innerWidth <= 900 && (
+        <div className="admin-sidebar-overlay" onClick={() => setSidebarOpen(false)} />
+      )}
+
       <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="admin-sidebar-logo">
           <div className="nav-logo-icon" style={{ width: '34px', height: '34px', fontSize: '0.9rem' }}>T</div>
