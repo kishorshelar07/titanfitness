@@ -142,55 +142,6 @@
 .admin-action-btn.delete:hover { background: var(--red); color: white; }
 
 @media (max-width: 900px) {
+  .admin-sidebar { display: none; }
   .dash-stats-grid { grid-template-columns: repeat(2,1fr); }
-
-  /* Mobile Sidebar — Overlay style */
-  .admin-sidebar {
-    position: fixed;
-    top: 0; left: -280px;
-    width: 260px !important;
-    height: 100vh;
-    z-index: 2000;
-    transition: left 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
-    box-shadow: 4px 0 30px rgba(0,0,0,0.7);
-  }
-  .admin-sidebar.open {
-    left: 0 !important;
-    width: 260px !important;
-  }
-  .admin-sidebar.closed {
-    left: -280px !important;
-    width: 260px !important;
-  }
-
-  /* Sidebar text always visible on mobile */
-  .admin-sidebar .admin-nav-item span:last-child { display: block !important; }
-  .admin-sidebar .admin-sidebar-logo span       { display: block !important; }
-  .admin-sidebar .admin-sidebar-footer div      { display: block !important; }
-  .admin-logout-btn span:last-child             { display: inline !important; }
-
-  /* Overlay background */
-  .admin-sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 1999;
-  }
-
-  /* Main content full width */
-  .admin-main { width: 100%; }
-
-  /* Tables scroll */
-  .admin-table-wrap { overflow-x: auto; }
-
-  /* Cards stack */
-  .admin-content > div > div[style*="grid-template-columns: 1fr 1fr"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .dash-stats-grid { grid-template-columns: repeat(2,1fr); }
-  .admin-topbar { padding: 0 16px; }
-  .admin-content { padding: 16px; }
 }
