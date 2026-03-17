@@ -142,6 +142,47 @@
 .admin-action-btn.delete:hover { background: var(--red); color: white; }
 
 @media (max-width: 900px) {
-  .admin-sidebar { display: none; }
   .dash-stats-grid { grid-template-columns: repeat(2,1fr); }
+
+  /* Mobile Sidebar */
+  .admin-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: -280px;
+    width: 260px !important;
+    height: 100vh;
+    z-index: 2000;
+    transition: left 0.35s ease;
+    box-shadow: 4px 0 30px rgba(0,0,0,0.8);
+    display: flex !important;
+  }
+  .admin-sidebar.open {
+    left: 0 !important;
+  }
+  .admin-sidebar.closed {
+    left: -280px !important;
+  }
+
+  /* Sidebar text always show on mobile */
+  .admin-nav-item span { display: inline !important; }
+  .admin-sidebar-logo > span { display: block !important; }
+  .admin-logout-btn { flex-direction: row !important; }
+
+  /* Dark overlay */
+  .admin-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 1999;
+    display: block;
+  }
+
+  .admin-main { width: 100%; }
+  .admin-table-wrap { overflow-x: auto; }
+}
+
+@media (max-width: 480px) {
+  .dash-stats-grid { grid-template-columns: repeat(2,1fr); }
+  .admin-topbar { padding: 0 16px; }
+  .admin-content { padding: 16px; }
 }

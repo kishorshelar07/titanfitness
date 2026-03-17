@@ -78,7 +78,7 @@ const DashStat = ({ label, value, icon, color }) => (
 const AdminDashboard = () => {
   const { adminUser, adminLogout, showToast } = useApp();
   const [activeTab,   setActiveTab]   = useState('dashboard');
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 900);
   const [programs,    setPrograms]    = useState([]);
   const [trainers,    setTrainers]    = useState([]);
   const [contacts,    setContacts]    = useState([]);
